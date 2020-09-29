@@ -13,7 +13,7 @@
 
 <script>
 	export default {
-		name: "TaskPage",
+		name: "Task1Page",
 		data () {
 			return {
 				task1Results: []
@@ -53,6 +53,7 @@
 	.task-page {
 		display: flex;
 		flex-direction: column;
+		padding: 40px;
 
 		span {
 			margin-bottom: 3px;

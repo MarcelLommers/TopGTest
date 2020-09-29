@@ -42,6 +42,10 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+	.task2-page {
+		padding: 40px;
+	}
 
 </style>
