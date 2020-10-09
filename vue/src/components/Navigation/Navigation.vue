@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import Vue from 'vue'
+import _ from 'lodash'
 
 import LinkList from "./RouterComponents/LinkList";
 
