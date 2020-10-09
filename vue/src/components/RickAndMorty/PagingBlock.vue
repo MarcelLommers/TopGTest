@@ -10,16 +10,22 @@
 		>
 		</button>
 
-		<input
-			v-model="pagingData.current"
-			class="current-page"
-			type="number"
-			disabled
-		/>
+<!--		todo: implement generic current interaction -->
+<!--		<input-->
+<!--			v-model="pagingData.current"-->
+<!--			class="current-page"-->
+<!--			type="number"-->
+<!--			disabled-->
+<!--		/>-->
+<!--		<span-->
+<!--			class="total-pages"-->
+<!--			v-text="listInfo.pages"-->
+<!--		>-->
+<!--		</span>-->
 		<span
-			class="total-pages"
-			v-text="listInfo.pages">
-
+			class="paging-display"
+			v-text="pagingData.current + ' / ' + listInfo.pages"
+		>
 		</span>
 
 		<button
