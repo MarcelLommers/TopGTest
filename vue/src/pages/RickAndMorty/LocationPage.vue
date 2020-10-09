@@ -23,12 +23,12 @@
 
 <script>
 	import Vue from 'vue'
+	import _ from "lodash";
 
 	import * as RickAndMortyApi from '../../Api/RickAndMortyApi.js'
 
 	import LocationCard  from "../../components/RickAndMorty/LocationCard";
 	import CharacterCard from "../../components/RickAndMorty/CharacterCard";
-	import _ from "lodash";
 
 	export default {
 		name: "LocationPage",
@@ -36,18 +36,21 @@
 			'character-card': CharacterCard,
 			'location-card': LocationCard
 		},
+		props: {
+			locationId: {
+				default: 0,
+				type: Number
+			}
+		},
 		data () {
 			return {
-				location: {},
+				locationData: {},
 				characterList: []
 			}
 		},
-		mounted () {
-			this.getLocation()
-		},
 		computed: {
-			locationId () {
-				return this.$route.params.locationId || 1
+			location () {
+				return this.locationData
 			},
 			hasResidents () {
 				return _.size(this.location.residents || []) > 0
@@ -61,8 +64,10 @@
 				RickAndMortyApi.getLocation({
 					id: this.locationId
 				}).then(result => {
-					Vue.set(this, 'location', result)
+					Vue.set(this, 'locationData', result)
 
+					// make sure characterList is empty
+					Vue.set(this, 'characterList', [])
 					_.forEach(result.residents, characterUrl => {
 						this.getCharacterWithUrl(characterUrl)
 					})
@@ -74,6 +79,14 @@
 				}).then(result => {
 					Vue.set(this.characterList, _.size(this.characterList), result)
 				})
+			}
+		},
+		watch: {
+			locationId: {
+				handler () {
+					this.getLocation()
+				},
+				immediate: true
 			}
 		}
 	}

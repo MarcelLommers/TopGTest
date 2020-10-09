@@ -69,7 +69,7 @@
 		},
 		computed: {
 			IsRoutedLocationId () {
-				return this.$route.params.characterId === this.originLocation.id
+				return this.$route.params.locationId === this.location.id
 			},
 			residentCount () {
 				return _.size(this.location.residents)

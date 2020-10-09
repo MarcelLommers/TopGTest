@@ -146,10 +146,15 @@ export default [
     }
   },
   {
-    path: "/RickAndMortyLocation",
+    path: "/RickAndMortyLocation/:locationId",
     name: "Rick and Morty - Location",
     components: {
       content: RMLocationPage
+    },
+    props: {
+      content: route => ({
+        locationId: route.params.locationId
+      })
     },
     meta: {
       allowAnonymous: true
